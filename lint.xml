@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconLocation">
+        <ignore path="res\drawable\allapp_focused.png" />
+        <ignore path="res\drawable\allapp_normal.png" />
+        <ignore path="res\drawable\allapp_pressed.png" />
+        <ignore path="res\drawable\appwidget_clock_dial.png" />
+        <ignore path="res\drawable\appwidget_clock_hour.png" />
+        <ignore path="res\drawable\appwidget_clock_minute.png" />
+        <ignore path="res\drawable\bg_video_dock.png" />
+        <ignore path="res\drawable\browser_focused.png" />
+        <ignore path="res\drawable\browser_normal.png" />
+        <ignore path="res\drawable\browser_pressed.png" />
+        <ignore path="res\drawable\folder_focused.png" />
+        <ignore path="res\drawable\folder_normal.png" />
+        <ignore path="res\drawable\folder_pressed.png" />
+        <ignore path="res\drawable\gallery_focused.png" />
+        <ignore path="res\drawable\gallery_normal.png" />
+        <ignore path="res\drawable\gallery_photo_1.jpg" />
+        <ignore path="res\drawable\gallery_photo_2.jpg" />
+        <ignore path="res\drawable\gallery_photo_3.jpg" />
+        <ignore path="res\drawable\gallery_photo_4.jpg" />
+        <ignore path="res\drawable\gallery_photo_5.jpg" />
+        <ignore path="res\drawable\gallery_photo_6.jpg" />
+        <ignore path="res\drawable\gallery_photo_7.jpg" />
+        <ignore path="res\drawable\gallery_photo_8.jpg" />
+        <ignore path="res\drawable\gallery_pressed.png" />
+        <ignore path="res\drawable\games_focused.png" />
+        <ignore path="res\drawable\games_normal.png" />
+        <ignore path="res\drawable\games_pressed.png" />
+        <ignore path="res\drawable\ic_launcher.png" />
+        <ignore path="res\drawable\icon_ppstream.png" />
+        <ignore path="res\drawable\icon_pptv.png" />
+        <ignore path="res\drawable\icon_qiyi.png" />
+        <ignore path="res\drawable\icon_qqlive.png" />
+        <ignore path="res\drawable\icon_sohu.png" />
+        <ignore path="res\drawable\market_focused.png" />
+        <ignore path="res\drawable\market_normal.png" />
+        <ignore path="res\drawable\market_pressed.png" />
+        <ignore path="res\drawable\settings_focused.png" />
+        <ignore path="res\drawable\settings_normal.png" />
+        <ignore path="res\drawable\settings_pressed.png" />
+        <ignore path="res\drawable\statusbar_background.png" />
+        <ignore path="res\drawable\statusbaritem_focused.png" />
+        <ignore path="res\drawable\video_focused.png" />
+        <ignore path="res\drawable\video_normal.png" />
+        <ignore path="res\drawable\video_pressed.png" />
+    </issue>
+</lint>

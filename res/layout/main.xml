@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    
+    android:orientation="vertical" >
+    <Gallery
+        android:id="@+id/gallery"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:background="@drawable/bg_video_dock"
+        android:layout_weight="1" />
+    <Button 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick" 
+        android:focusable="false"
+        android:visibility="gone"/>
+    
+	<LinearLayout android:id="@+id/shortcutIcons"
+	    android:layout_width="match_parent"	    
+	    android:layout_height="125dip"
+	    android:background="@drawable/statusbar_background"
+	    android:orientation="horizontal">
+	    
+		<AnalogClock
+			android:id="@+id/analog_appwidget"
+			android:dial="@drawable/appwidget_clock_dial"
+			android:hand_hour="@drawable/appwidget_clock_hour"
+			android:hand_minute="@drawable/appwidget_clock_minute"
+			android:layout_width="148dip"
+			android:layout_height="75dip"
+			         android:layout_gravity="center"
+			android:layout_marginTop="0dip"
+			android:layout_marginBottom="0dip"/>
+		<LinearLayout
+			android:layout_width="match_parent"     
+			android:layout_height="125dip"			
+			android:orientation="horizontal">
+	
+		    <ImageButton android:id="@+id/bar_icon_video"
+		        android:layout_marginTop="15dip"
+		        android:layout_marginBottom="5dip"
+		        android:layout_width="0dip"
+		        android:layout_height="match_parent"                         
+		        android:gravity="center_vertical"
+		        android:layout_weight="1"
+		        android:clickable="true"
+		        android:onClick="onClick"
+		        android:orientation="horizontal"
+		        android:src="@drawable/xml_stat_video"
+		        android:background="@drawable/statusbaritem"/>
+		
+		    <ImageButton android:id="@+id/bar_icon_games"
+		        android:layout_marginTop="15dip"
+		        android:layout_marginBottom="5dip"          
+				android:layout_width="0dip"
+				android:layout_height="match_parent"                        
+				android:gravity="center_vertical"
+				android:layout_weight="1"
+				android:clickable="true"
+				android:onClick="onClick"
+				android:orientation="horizontal"
+				android:src="@drawable/xml_stat_games"
+				android:background="@drawable/statusbaritem"/>
+		                 
+		    <ImageButton android:id="@+id/bar_icon_folder"
+		        android:layout_marginTop="15dip"
+		        android:layout_marginBottom="5dip"          
+				android:layout_width="0dip"
+				android:layout_height="match_parent"                        
+				android:gravity="center_vertical"
+				android:layout_weight="1"
+				android:clickable="true"
+				android:onClick="onClick"
+				android:orientation="horizontal"
+				android:src="@drawable/xml_stat_folder"
+				android:background="@drawable/statusbaritem"/>
+		
+		    <ImageButton android:id="@+id/bar_icon_allapp"
+				android:layout_marginTop="15dip"
+				android:layout_marginBottom="5dip"          
+				android:layout_width="0dip"
+				android:layout_height="match_parent"                        
+				android:gravity="center_vertical"
+				android:layout_weight="1"
+				android:clickable="true"
+				android:onClick="onClick"
+				android:orientation="horizontal"
+				android:src="@drawable/xml_stat_allapp"
+				android:background="@drawable/statusbaritem"/>
+		
+		    <ImageButton android:id="@+id/bar_icon_gallery"
+				android:layout_marginTop="15dip"
+				android:layout_marginBottom="5dip"          
+				android:layout_width="0dip"
+				android:layout_height="match_parent"                        
+				android:gravity="center_vertical"
+				android:layout_weight="1"
+				android:clickable="true"
+				android:onClick="onClick"
+				android:orientation="horizontal"
+				android:src="@drawable/xml_stat_gallery"
+				android:background="@drawable/statusbaritem"/>
+		            
+		    <ImageButton android:id="@+id/bar_icon_browser"
+		        android:layout_marginTop="15dip"
+		        android:layout_marginBottom="5dip"          
+		        android:layout_width="0dip"
+		        android:layout_height="match_parent"                        
+		        android:gravity="center_vertical"
+		        android:layout_weight="1"
+		        android:clickable="true"
+		        android:onClick="onClick"
+		        android:orientation="horizontal"
+		        android:src="@drawable/xml_stat_browser"
+		        android:background="@drawable/statusbaritem"/>
+		                
+		    <ImageButton android:id="@+id/bar_icon_market"
+		        android:layout_marginTop="15dip"
+		        android:layout_marginBottom="5dip"          
+		        android:layout_width="0dip"
+		        android:layout_height="match_parent"                        
+		        android:gravity="center_vertical"
+		        android:layout_weight="1"
+		        android:clickable="true"
+		        android:onClick="onClick"
+		        android:orientation="horizontal"
+		        android:src="@drawable/xml_stat_market"
+		        android:background="@drawable/statusbaritem"/>
+		                    
+		    <ImageButton android:id="@+id/bar_icon_settings"
+		        android:layout_marginTop="15dip"
+		        android:layout_marginBottom="5dip"          
+		        android:layout_width="0dip"
+		        android:layout_height="match_parent"                        
+		        android:gravity="center_vertical"
+		        android:layout_weight="1"
+		        android:clickable="true"
+		        android:onClick="onClick"
+		        android:src="@drawable/xml_stat_settings"
+		        android:background="@drawable/statusbaritem"
+		        android:nextFocusRight="@+id/notification_status"/>
+	    </LinearLayout>
+	</LinearLayout>    
+</LinearLayout>

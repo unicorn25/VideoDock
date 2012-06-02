@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="hotseats" translatable="false">        
+        <item>intent:#Intent;action=android.intent.action.MAIN;component=com.pplive.androidpad/.ui.FirstActivity;end</item>
+        <item>intent:#Intent;action=android.intent.action.MAIN;component=com.sohu.tv/.WelcomeActivity;end</item>
+        <item>intent:#Intent;action=android.intent.action.MAIN;component=com.tencent.qqlivehd/.HomeActivityGroup;end</item>
+        <item>intent:#Intent;action=android.intent.action.MAIN;component=tv.pps/.WelcomeActivity;end</item>
+        <item>intent:#Intent;action=android.intent.action.MAIN;component=com.qiyi.video/.WelcomeActivity;end</item>            
+    </string-array>
+    <array name="hotseat_icons" translatable="false">
+        <item>@drawable/icon_pptv</item>
+        <item>@drawable/icon_sohu</item>
+        <item>@drawable/icon_qqlive</item>
+        <item>@drawable/icon_ppstream</item>
+        <item>@drawable/icon_qiyi</item>
+    </array>
+</resources>
