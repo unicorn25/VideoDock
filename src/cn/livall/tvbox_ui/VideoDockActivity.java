@@ -1,5 +1,8 @@
 package cn.livall.tvbox_ui;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
@@ -10,7 +13,9 @@ import android.content.pm.ResolveInfo;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
+import android.util.Xml;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +29,10 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 public class VideoDockActivity extends Activity {
@@ -44,18 +53,17 @@ public class VideoDockActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN ,   
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN , WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.main);
         
         loadHotseats();
         mAdapter = new ImageAdapter(this);
         
         mGallery = (Gallery) findViewById(R.id.gallery);
-        mGallery.setAdapter(mAdapter);        
-        mGallery.setSpacing(20);
-        mGallery.setUnselectedAlpha(2.0f);
-        mGallery.setSelection(2);
+        mGallery.setAdapter(mAdapter);
+        mGallery.setSpacing(20);//图标间距
+        mGallery.setUnselectedAlpha(2.0f);//未选择的图标透明度
+        mGallery.setSelection(2);//设置第三个图标为默认选定项
         mGallery.setAnimationDuration(0);
         
 //        mGallery.setCallbackDuringFling(false);
@@ -85,9 +93,9 @@ public class VideoDockActivity extends Activity {
     public void launchHotSeat(int index) {        
         if (index >= 0 && index < mHotseats.length && mHotseats[index] != null) {
             Intent intent = mHotseats[index];
-            startActivitySafely(intent, "hotseat");
+            startActivitySafely(intent);
         }
-    }    
+    }
     
     private void loadHotseats() {
         if (mHotseatConfig == null) {
@@ -200,22 +208,15 @@ public class VideoDockActivity extends Activity {
         }
     }
     
-    void startActivitySafely(Intent intent, Object tag) {        
+    void startActivitySafely(Intent intent) {        
         try {
             startActivity(intent);
         } catch (ActivityNotFoundException e) {                        
             Toast.makeText(this, R.string.activity_not_found,
                     Toast.LENGTH_SHORT).show();
-            Log.e(TAG, "Unable to launch. tag=" + tag + " intent=" + intent, e);
         } catch (SecurityException e) {
             Toast.makeText(this, R.string.activity_not_found,
                     Toast.LENGTH_SHORT).show();
-            Log.e(TAG,
-                    "Launcher does not have the permission to launch "
-                            + intent
-                            + ". Make sure to create a MAIN intent-filter for the corresponding activity "
-                            + "or use the exported attribute for this activity. "
-                            + "tag=" + tag + " intent=" + intent, e);
         }
     }
 
@@ -224,6 +225,59 @@ public class VideoDockActivity extends Activity {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) return true;        
         return super.dispatchKeyEvent(event);
     }
+    
+    void readShortcuts(){         
+        final File configureFile = new File(Environment.getRootDirectory(), "file:///shortcutlist.xml");
+        readShortcutsFromXml(configureFile);        
+    }
+    
+    void readShortcutsFromXml(File file) {
+        FileReader permReader = null;
+        try {
+            permReader = new FileReader(file);
+        } catch (FileNotFoundException e) {
+            Log.w(TAG, "Couldn't find or open configure file:" + file);
+            return;
+        }
+
+        try {
+            XmlPullParser parser = Xml.newPullParser();
+            parser.setInput(permReader);            
+
+            while (true) {
+                if (parser.getEventType() == XmlPullParser.END_TAG) {
+                    parser.next();
+                    continue;
+                }
+                
+                if (parser.getEventType() == XmlPullParser.END_DOCUMENT) {
+                    permReader.close();
+                    break;
+                }
+
+                String name = parser.getName();
+                if ("shortcut".equals(name)) {
+                    String nameStr = parser.getAttributeValue(null, "name");
+                    if (nameStr != null) {
+                    } else {
+                    }
+                    
+                    String iconStr = parser.getAttributeValue(null, "icon");
+                    if (iconStr != null) {
+                    } else {
+                    }
+                } else {
+                }
+
+                parser.next();
+                continue;
+            }
+        } catch (XmlPullParserException e) {
+        } catch (IOException e) {
+        }
+        
+    }
+    
 
 
     public class ImageAdapter extends BaseAdapter {
@@ -330,9 +384,9 @@ public class VideoDockActivity extends Activity {
 
         if (pkg !="" && cls!="") {
             Intent intent = new Intent();
-            intent.setComponent( new ComponentName(pkg, cls) );
+            intent.setComponent(new ComponentName(pkg, cls));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            startActivitySafely(intent);
             
         }
     }
